@@ -1,0 +1,161 @@
+.openSidebar{
+    left: 0!important;
+}
+.sidebar {
+    background-color: #3d3d3d;
+    box-shadow: rgba(0, 0, 0, 1) 0px 1px 4px;
+    height: 100vh;
+    color: white;
+    width: 18.5%;
+    position: fixed;
+    transition: .3s ease-in-out;
+    z-index: 999;
+    @media screen and (max-width: 1050px) {
+        left: -80%;
+        width: 30%;
+    }
+    @media screen and (max-width: 850px) {
+        width: 35%;
+    }
+    @media screen and (max-width: 720px) {
+        width: 40%;
+    }
+    @media screen and (max-width: 650px) {
+        width: 60%;
+    }
+    @media screen and (max-width: 400px) {
+        width: 70%;
+    }
+    .sidebarTop {
+        padding-top: 25PX;
+        text-align: center;
+        color: #fff;
+        cursor: pointer;
+
+        h2 {
+            font-weight: 900;
+            font-size: 24px;
+        }
+    }
+
+    .sidebarBottom {
+        padding-left: 10px;
+        padding-top: 20px;
+        padding-right: 10px;
+
+        ul {
+            a{
+                text-decoration: none;
+            }
+            li {
+                display: flex;
+                align-items: center;
+                font-size: 14px;
+                gap: 10px;
+                padding: 10px;
+                margin: 10px 0;
+                font-weight: 600;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: .5s ease-in-out !important;
+
+                &:hover {
+                    background-color: #5127E4;
+                    color: #fff;
+
+                }
+            }
+        }
+    }
+
+    .logout {
+        padding-left: 10px;
+        padding-top: 0px;
+        padding-right: 10px;
+
+        div {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            // margin-top: 5rem;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: .5s ease-in-out !important;
+            font-weight: bold;
+            font-size: 14px;
+            &:hover {
+                background-color: red;
+                color: #fff;
+            }
+        }
+
+    }
+    // .sideBarCard{
+    //     background-color: #191C24 !important;
+    //     width: 100%;
+    //     margin-top: 2rem;
+    //     padding: 1rem;
+    //     text-align: center;
+    //     position: relative;
+
+    //     .icon{
+    //         position: absolute;
+    //         background: #191C24 !important;
+    //         border: 10px solid  #242938;
+    //         font-size: 3rem;
+    //         border-radius: 50%;
+    //         top: -8px;
+    //         right: 50%;
+    //         transform: translate(50%);
+    //         z-index: 100;
+    //         color: #fff;
+    //     }
+    //     .cardContent{
+    //         position: relative;
+    //         padding: 1rem;
+    //         background: #191C24;
+    //         border-radius: 10px;
+    //         overflow: hidden;
+    //         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    //         h3{
+    //             font-size: var(--h3FontSize);
+    //             margin-top: 1rem;
+    //             padding: 1rem 0;
+    //             font-weight: 800;
+    //             color: #fff;
+    //         }
+    //         p{
+    //             font-size: var(--normalFontSize);
+    //             color: #fff;
+    //             padding-bottom: 1rem;
+    //             font-weight: 500;
+    //         }
+    //         .btn{
+    //             position: relative;
+    //             color: var(--textColor);
+    //             z-index: 1000;
+    //         }
+    //         .circle1, .circle2{
+    //             position: absolute;
+    //             background-color: #242938;
+    //             border-radius: 50%;
+    //             opacity: .7;
+    //         }
+
+    //         .circle1{
+    //             height: 100px;
+    //             width: 100px;
+    //             top: -50px;
+    //             left: -50px;
+    //         }
+    //         .circle2{
+    //             height: 150px;
+    //             width: 150px;
+    //             bottom: -80px;
+    //             right: -70px;
+    //             z-index: 1;
+    //         }
+    //     }
+    // }
+}

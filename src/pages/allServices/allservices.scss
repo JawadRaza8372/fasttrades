@@ -1,0 +1,145 @@
+.search__bar {
+	background-color: #3d3d3d;
+	display: flex;
+	align-items: center;
+	width: 50%;
+	border-radius: 10px;
+	height: 70%;
+	margin: auto;
+	margin-top: 20px;
+	@media screen and (max-width: 650px) {
+		height: 35% !important;
+		margin-top: 0px !important;
+	}
+	@media screen and (max-width: 500px) {
+		width: 80%;
+	}
+	@media screen and (max-width: 365px) {
+		width: 60%;
+	}
+	.rightIcon {
+		cursor: pointer;
+		margin: 0 12px;
+		font-size: 21px;
+		color: gray;
+		font-weight: bold;
+	}
+	input {
+		border: none;
+		background-color: transparent;
+		padding: 10px 0;
+		width: 100%;
+		color: #fff;
+		&::placeholder {
+			color: gray;
+			font-size: 13px;
+		}
+		&:focus {
+			outline: none;
+		}
+	}
+}
+.Services {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+	@media screen and (max-width: 850px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	@media screen and (max-width: 600px) {
+		grid-template-columns: repeat(1, 1fr);
+	}
+	.card {
+		background-color: #3d3d3d;
+		width: 100% !important;
+		padding: 20px 20px;
+		max-width: 350px;
+		margin: 0 auto;
+		img {
+			width: 100%;
+			height: 250px;
+		}
+		.card-body {
+			padding-top: 10px;
+			h2 {
+				padding-bottom: 4px;
+			}
+			p {
+				padding-bottom: 6px;
+			}
+			.butns {
+				display: flex;
+				justify-content: flex-end;
+				gap: 10px;
+				button {
+					padding: 5px 10px;
+					background: transparent;
+					outline: none;
+					border: 1px solid gray;
+					color: #fff;
+					cursor: pointer;
+					&:hover {
+						border: none;
+					}
+				}
+				.re {
+					&:hover {
+						background: red;
+						border: 1px solid red;
+					}
+				}
+				.de {
+					button {
+						&:hover {
+							background: #5127e5;
+							border: 1px solid #5127e5;
+							color: #fff;
+						}
+					}
+				}
+			}
+		}
+	}
+	.modal {
+		height: 100% !important;
+		.modal-dialog {
+			.modal-content {
+				background-color: #3d3d3d !important;
+				.main {
+					display: flex;
+					gap: 10px;
+					.left {
+						width: 50%;
+						text-align: center;
+						img {
+							width: 100%;
+						}
+					}
+					.right {
+						width: 50%;
+						text-align: center !important;
+						display: flex;
+						flex-direction: column;
+						gap: 10px;
+						img {
+							width: 49%;
+						}
+					}
+				}
+				.btn-default {
+					padding: 5px 10px;
+					background: transparent;
+					outline: none;
+					border: 1px solid gray;
+					color: #fff;
+					cursor: pointer;
+					transition: 0.3s ease-in-out;
+					&:hover {
+						border: 1px solid red;
+						background-color: red;
+					}
+				}
+			}
+		}
+	}
+}

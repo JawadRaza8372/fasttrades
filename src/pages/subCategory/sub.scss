@@ -1,0 +1,89 @@
+.category {
+    margin-top: 0px;
+    .input__field {
+        margin-top: 30px;
+        input{
+            background-color: #3d3d3d;
+            width: 100%;
+            padding: 20px 20px;
+            border-radius: 5px;
+            outline: none;
+            border: none;
+            color: #fff;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+        select {
+            background-color: #3d3d3d;
+            width: 100%;
+            padding: 20px 20px;
+            border-radius: 5px;
+            outline: none;
+            border: none;
+            color: #fff;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .sub__btn{
+            margin-top: 20px;
+            padding: 10px 40px;
+            background-color: #3d3d3d;
+            outline: none;
+            border: none;
+            color: #fff;
+            font-weight: bold;
+            font-size: 14px;
+            letter-spacing: 1px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: .3s ease-in-out;
+            &:hover{
+                background-color: #5127E5;
+            }   
+        }
+    }
+
+    .box__sub-category{
+        margin-top: 4rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        @media screen and (max-width: 850px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @media screen and (max-width: 600px) {
+            grid-template-columns: repeat(1, 1fr);
+        }
+        .one__box{
+            background-color: #3d3d3d;
+            padding: 20px 10px 35px 10px;
+            border-radius: 10px;
+            text-align: center;
+            @media screen and (max-width: 350px) {
+                padding: 20px 10px 35px 10px;
+            }
+            button{
+                padding: 7px 15px;
+                background: transparent;
+                border: 1px solid gray;
+                color: #fff;
+                font-size: 12px;
+                font-weight: bold;
+                letter-spacing: 1px;
+                border-radius: 6px;
+                display: flex;
+                align-items: center;
+                gap: 9px;
+                cursor: pointer;
+                transition: .3s ease-in-out;
+                margin-top: 4rem !important;
+                margin: auto;
+                &:hover{
+                    background-color: red;
+                    border: 1px solid red;
+                }
+            }
+        }
+    }
+}
+
