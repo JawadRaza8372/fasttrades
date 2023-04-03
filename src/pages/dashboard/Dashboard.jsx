@@ -6,7 +6,7 @@ import Card from "./Card";
 import SearchIcon from "@mui/icons-material/Search";
 import { db } from "../../Firebase";
 import { doc, updateDoc } from "firebase/firestore";
-import { useDispatch, useSelector } from "react-redux/es/exports";
+import { useDispatch, useSelector } from "react-redux";
 import { setUsers } from "../../store/projectSlice";
 import { toast } from "react-toastify";
 const Dashboard = () => {

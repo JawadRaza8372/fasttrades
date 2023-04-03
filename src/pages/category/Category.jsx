@@ -6,7 +6,7 @@ import { db } from "../../Firebase";
 import { BsFillTrashFill } from "react-icons/bs";
 import { toast } from "react-toastify";
 import "./category.scss";
-import { useDispatch, useSelector } from "react-redux/es/exports";
+import { useDispatch, useSelector } from "react-redux";
 import { setCategories } from "../../store/projectSlice";
 
 const Category = () => {

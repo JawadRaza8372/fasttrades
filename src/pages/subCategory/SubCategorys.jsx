@@ -7,7 +7,7 @@ import { db } from "../../Firebase";
 import "./sub.scss";
 import { toast } from "react-toastify";
 import { setCategories } from "../../store/projectSlice";
-import { useDispatch, useSelector } from "react-redux/es/exports";
+import { useDispatch, useSelector } from "react-redux";
 
 const SubCategorys = () => {
 	const [subCategory, setSubCategory] = useState("");

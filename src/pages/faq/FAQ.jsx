@@ -4,7 +4,7 @@ import Sidebar from "../../layout/sidebar/Sidebar";
 import AdCard from "./AdCard";
 import "./add.scss";
 import { db } from "../../Firebase";
-import { useDispatch, useSelector } from "react-redux/es/exports";
+import { useDispatch, useSelector } from "react-redux";
 import { setAds } from "../../store/projectSlice";
 import { deleteDoc, doc } from "firebase/firestore";
 import { toast } from "react-toastify";

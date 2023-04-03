@@ -6,7 +6,7 @@ import { collection, deleteDoc, doc, setDoc } from "firebase/firestore";
 import { db } from "../../Firebase";
 import { toast } from "react-toastify";
 import { BsFillTrashFill } from "react-icons/bs";
-import { useDispatch, useSelector } from "react-redux/es/exports";
+import { useDispatch, useSelector } from "react-redux";
 import { setSubscription } from "../../store/projectSlice";
 
 const Subscription = () => {
