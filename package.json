@@ -27,6 +27,9 @@
     "react-scripts": "5.0.1",
     "react-toastify": "^9.1.1",
     "recharts": "^2.1.16",
+    "util": "^0.12.5",
+    "uuid": "^9.0.0",
+    "uuidv4": "^6.2.13",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

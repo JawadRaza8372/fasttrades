@@ -4,9 +4,12 @@ import { Link } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../Firebase";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { setAuth } from "../../store/authSlice";
 export default function Signup() {
 	const [email, setEmail] = useState();
 	const [password, setPassword] = useState();
+	const dispatch = useDispatch();
 
 	const handleClick = (e) => {
 		e.preventDefault();
@@ -19,6 +22,12 @@ export default function Signup() {
 					"fasttrade@dminPanel",
 					JSON.stringify({ userid: auth.user.uid, email: auth.user.email })
 				);
+				dispatch(
+					setAuth({
+						isAuth: { userid: auth.user.uid, email: auth.user.email },
+					})
+				);
+
 				toast.success(`Account Created Successfully`, {
 					position: "top-right",
 					autoClose: 5000,

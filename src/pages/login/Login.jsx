@@ -4,19 +4,24 @@ import "./login.scss";
 import { auth } from "../../Firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { setAuth } from "../../store/authSlice";
+
 export default function Login() {
 	const [email, setEmail] = useState();
 	const [password, setPassword] = useState();
-
+	const dispatch = useDispatch();
 	const signupacc = (e) => {
 		e.preventDefault();
 		signInWithEmailAndPassword(auth, email, password)
 			.then((userCredential) => {
 				const user = userCredential.user;
+
 				window.localStorage.setItem(
 					"fasttrade@dminPanel",
 					JSON.stringify({ userid: user.uid, email: user.email })
 				);
+				dispatch(setAuth({ isAuth: { userid: user.uid, email: user.email } }));
 				toast.success(`Login Successful`, {
 					position: "top-right",
 					autoClose: 5000,

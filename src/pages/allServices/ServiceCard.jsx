@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 const ServiceCard = ({ img, title, desc, price, id, delPostFunction }) => {
 	const [showModel, setshowModel] = useState(false);
-
 	return (
 		<>
 			<div className='card' style={{ width: "18rem" }}>
@@ -51,8 +50,13 @@ const ServiceCard = ({ img, title, desc, price, id, delPostFunction }) => {
 										<img src={img} alt='' />
 									</div>
 									<div className='right'>
-										<img src={img} alt='' />
-										<img src={img} alt='' />
+										{img?.map((dat) => {
+											if (dat?.length > 0) {
+												return <img src={dat} alt='' />;
+											} else {
+												return null;
+											}
+										})}
 									</div>
 								</div>
 								<p>{desc ? desc : "---"}</p>

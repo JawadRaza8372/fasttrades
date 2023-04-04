@@ -102,7 +102,6 @@ const SubCategorys = () => {
 			theme: "colored",
 		});
 	};
-	console.log(selectedCategory);
 	return (
 		<>
 			<Sidebar open={open} setOpen={setOpen} handle={handle} />

@@ -5,7 +5,9 @@ import LightbulbIcon from "@mui/icons-material/Lightbulb";
 import LiveHelpIcon from "@mui/icons-material/LiveHelp";
 import LogoutIcon from "@mui/icons-material/Logout";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
-import PaymentIcon from "@mui/icons-material/Payment";
+import ChatBubble from "@mui/icons-material/ChatBubble";
+
+// import PaymentIcon from "@mui/icons-material/Payment";
 import DesignServicesIcon from "@mui/icons-material/DesignServices";
 import { Link } from "react-router-dom";
 import { GoReport } from "react-icons/go";
@@ -51,13 +53,13 @@ const Sidebar = ({ open, setOpen, handle }) => {
 								<span> Users </span>{" "}
 							</li>
 						</Link>
-						<Link className='link' to='/subscription' onClick={handle}>
+						{/* <Link className='link' to='/subscription' onClick={handle}>
 							<li>
 								{" "}
 								<PaymentIcon style={{ fontSize: "17px" }} />{" "}
 								<span> Subscription </span>{" "}
 							</li>
-						</Link>
+						</Link> */}
 						<Link className='link' to='/category' onClick={handle}>
 							<li>
 								{" "}
@@ -90,6 +92,12 @@ const Sidebar = ({ open, setOpen, handle }) => {
 							<li>
 								{" "}
 								<GoReport style={{ fontSize: "17px" }} /> <span> Reports </span>{" "}
+							</li>
+						</Link>
+						<Link className='link' to='/chat' onClick={handle}>
+							<li>
+								{" "}
+								<ChatBubble style={{ fontSize: "17px" }} /> <span> Chat </span>{" "}
 							</li>
 						</Link>
 					</ul>

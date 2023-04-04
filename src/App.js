@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import FAQ from "./pages/faq/FAQ";
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
-import Subscription from "./pages/subscription/Subscription";
+// import Subscription from "./pages/subscription/Subscription";
 import Category from "./pages/category/Category";
 import AllServices from "./pages/allServices/AllServices";
 import Forget from "./pages/signup/Forget";
@@ -20,10 +20,12 @@ import {
 	setPosts,
 	setAds,
 	setSubscription,
+	setReports,
 } from "./store/projectSlice";
 import { setAuth } from "./store/authSlice";
 import { db } from "./Firebase";
 import { Navigate, Link } from "react-router-dom";
+import ChatList from "./pages/Chat/ChatList";
 const App = () => {
 	let ProtectedRoute = ({ children }) => {
 		const { isAuth } = useSelector((state) => state.auth);
@@ -124,6 +126,23 @@ const App = () => {
 				console.log(error.message);
 			});
 	}
+	function getReports() {
+		const categoryCollectionRef = collection(db, "Reports");
+		getDocs(categoryCollectionRef)
+			.then((response) => {
+				dispatch(
+					setReports({
+						reports: response.docs.map((doc) => ({
+							...doc.data(),
+							id: doc.id,
+						})),
+					})
+				);
+			})
+			.catch((error) => {
+				console.log(error.message);
+			});
+	}
 	useEffect(() => {
 		getLogin();
 		getUsers();
@@ -131,6 +150,7 @@ const App = () => {
 		getPosts();
 		getAds();
 		getSubscription();
+		getReports();
 	});
 
 	return (
@@ -171,14 +191,14 @@ const App = () => {
 						</ProtectedRoute>
 					}
 				/>
-				<Route
+				{/* <Route
 					path='/subscription'
 					element={
 						<ProtectedRoute>
 							<Subscription />
 						</ProtectedRoute>
 					}
-				/>
+				/> */}
 				<Route
 					path='/category'
 					element={
@@ -217,6 +237,14 @@ const App = () => {
 					element={
 						<ProtectedRoute>
 							<Reports />
+						</ProtectedRoute>
+					}
+				/>
+				<Route
+					path='/chat'
+					element={
+						<ProtectedRoute>
+							<ChatList />
 						</ProtectedRoute>
 					}
 				/>
