@@ -8,6 +8,7 @@ const initialState = {
 	subscription: [],
 	reports: [],
 	rooms: [],
+	services: [],
 };
 
 export const projectSlice = createSlice({
@@ -63,6 +64,13 @@ export const projectSlice = createSlice({
 				state.rooms = action.payload.rooms;
 			}
 		},
+		setServices: (state, action) => {
+			if (action.payload.services === null) {
+				state.services = [];
+			} else {
+				state.services = action.payload.services;
+			}
+		},
 	},
 });
 
@@ -74,6 +82,7 @@ export const {
 	setSubscription,
 	setReports,
 	setRooms,
+	setServices,
 } = projectSlice.actions;
 
 export default projectSlice.reducer;

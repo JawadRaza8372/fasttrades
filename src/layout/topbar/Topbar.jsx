@@ -10,7 +10,7 @@ const Topbar = ({ open, setOpen, handle }) => {
 				<div className='topbar__content'>
 					<div className='left'>
 						<div>
-							<h3> Hi Jhon, </h3>
+							<h3> Hi Admin, </h3>
 							<h4>
 								{" "}
 								Welcome to <span>MY Admin Panel</span>{" "}

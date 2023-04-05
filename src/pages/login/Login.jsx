@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import "./login.scss";
-import { auth } from "../../Firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import "../signup/signup.scss";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { setAuth } from "../../store/authSlice";
@@ -13,37 +10,35 @@ export default function Login() {
 	const dispatch = useDispatch();
 	const signupacc = (e) => {
 		e.preventDefault();
-		signInWithEmailAndPassword(auth, email, password)
-			.then((userCredential) => {
-				const user = userCredential.user;
 
-				window.localStorage.setItem(
-					"fasttrade@dminPanel",
-					JSON.stringify({ userid: user.uid, email: user.email })
-				);
-				dispatch(setAuth({ isAuth: { userid: user.uid, email: user.email } }));
-				toast.success(`Login Successful`, {
-					position: "top-right",
-					autoClose: 5000,
-					hideProgressBar: false,
-					pauseOnHover: true,
-					draggable: true,
-					progress: undefined,
-					theme: "colored",
-				});
-			})
-			.catch((err) => {
-				console.log(err);
-				toast.error(`${err.message}`, {
-					position: "top-right",
-					autoClose: 5000,
-					hideProgressBar: false,
-					pauseOnHover: true,
-					draggable: true,
-					progress: undefined,
-					theme: "colored",
-				});
+		if (email === "freetrade@admin.com" && password === "admin1234") {
+			dispatch(
+				setAuth({ isAuth: { userid: "adminId", email: "freetrade@admin.com" } })
+			);
+			window.localStorage.setItem(
+				"fasttrade@dminPanel",
+				JSON.stringify({ userid: "adminId", email: "freetrade@admin.com" })
+			);
+			toast.success(`Login Successful`, {
+				position: "top-right",
+				autoClose: 5000,
+				hideProgressBar: false,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: "colored",
 			});
+		} else {
+			toast.error(`Wrong Email or password`, {
+				position: "top-right",
+				autoClose: 5000,
+				hideProgressBar: false,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: "colored",
+			});
+		}
 	};
 
 	return (
@@ -74,10 +69,6 @@ export default function Login() {
 					{" "}
 					<button onClick={signupacc}> Login </button>{" "}
 				</div>
-				<p>
-					{" "}
-					Don't have an account? <Link to='/signup'>Signup</Link>{" "}
-				</p>
 			</form>
 		</>
 	);

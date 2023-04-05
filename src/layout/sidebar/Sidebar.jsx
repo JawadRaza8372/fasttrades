@@ -11,31 +11,24 @@ import ChatBubble from "@mui/icons-material/ChatBubble";
 import DesignServicesIcon from "@mui/icons-material/DesignServices";
 import { Link } from "react-router-dom";
 import { GoReport } from "react-icons/go";
-import { getAuth, signOut } from "firebase/auth";
 import { toast } from "react-toastify";
 import { setAuth } from "../../store/authSlice";
 import { useDispatch } from "react-redux";
+import { ManageAccounts } from "@mui/icons-material";
 const Sidebar = ({ open, setOpen, handle }) => {
 	const dispatch = useDispatch();
 	const logout = () => {
-		const auth = getAuth();
-		signOut(auth)
-			.then(() => {
-				window.localStorage.removeItem("fasttrade@dminPanel");
-				dispatch(setAuth({ isAuth: null }));
-				toast.success(`Logged Out Successfully`, {
-					position: "top-right",
-					autoClose: 5000,
-					hideProgressBar: false,
-					pauseOnHover: true,
-					draggable: true,
-					progress: undefined,
-					theme: "colored",
-				});
-			})
-			.catch((error) => {
-				alert(error);
-			});
+		window.localStorage.removeItem("fasttrade@dminPanel");
+		dispatch(setAuth({ isAuth: null }));
+		toast.success(`Logged Out Successfully`, {
+			position: "top-right",
+			autoClose: 5000,
+			hideProgressBar: false,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+			theme: "colored",
+		});
 	};
 
 	return (
@@ -86,6 +79,13 @@ const Sidebar = ({ open, setOpen, handle }) => {
 								{" "}
 								<DesignServicesIcon style={{ fontSize: "17px" }} />{" "}
 								<span> All Posts </span>{" "}
+							</li>
+						</Link>
+						<Link className='link' to='/services' onClick={handle}>
+							<li>
+								{" "}
+								<ManageAccounts style={{ fontSize: "17px" }} />{" "}
+								<span> Services </span>{" "}
 							</li>
 						</Link>
 						<Link className='link' to='/reports' onClick={handle}>

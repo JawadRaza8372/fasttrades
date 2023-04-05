@@ -3,7 +3,7 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import { Routes, Route } from "react-router-dom";
 import FAQ from "./pages/faq/FAQ";
 import Login from "./pages/login/Login";
-import Signup from "./pages/signup/Signup";
+//import Signup from "./pages/signup/Signup";
 // import Subscription from "./pages/subscription/Subscription";
 import Category from "./pages/category/Category";
 import AllServices from "./pages/allServices/AllServices";
@@ -23,12 +23,14 @@ import {
 	setSubscription,
 	setReports,
 	setRooms,
+	setServices,
 } from "./store/projectSlice";
 import { setAuth } from "./store/authSlice";
 import { db } from "./Firebase";
 import { Navigate, Link } from "react-router-dom";
 import ChatList from "./pages/Chat/ChatList";
 import ChatRoom from "./pages/Chat/ChatRoom";
+import Services from "./pages/services/Services";
 const App = () => {
 	let ProtectedRoute = ({ children }) => {
 		const { isAuth } = useSelector((state) => state.auth);
@@ -68,6 +70,23 @@ const App = () => {
 				dispatch(
 					setCategories({
 						categories: response.docs.map((doc) => ({
+							data: doc.data(),
+							id: doc.id,
+						})),
+					})
+				);
+			})
+			.catch((error) => {
+				console.log(error.message);
+			});
+	}
+	function getServices() {
+		const categoryCollectionRef = collection(db, "Services");
+		getDocs(categoryCollectionRef)
+			.then((response) => {
+				dispatch(
+					setServices({
+						services: response.docs.map((doc) => ({
 							data: doc.data(),
 							id: doc.id,
 						})),
@@ -154,6 +173,7 @@ const App = () => {
 		getAds();
 		getSubscription();
 		getReports();
+		getServices();
 		onValue(ref(getDatabase(), `/chatlist/adminId`), (snapshot) => {
 			let result = snapshot.val();
 			let resultarry = Object.keys(result).map((dat, index) => {
@@ -186,14 +206,14 @@ const App = () => {
 						</AuthRoute>
 					}
 				/>
-				<Route
+				{/* <Route
 					path='/signup'
 					element={
 						<AuthRoute>
 							<Signup />
 						</AuthRoute>
 					}
-				/>
+				/> */}
 				<Route
 					path='/home'
 					element={
@@ -215,6 +235,14 @@ const App = () => {
 					element={
 						<ProtectedRoute>
 							<Category />
+						</ProtectedRoute>
+					}
+				/>
+				<Route
+					path='/services'
+					element={
+						<ProtectedRoute>
+							<Services />
 						</ProtectedRoute>
 					}
 				/>
