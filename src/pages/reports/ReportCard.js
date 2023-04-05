@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import img from "../../images/port1.jpg";
-import { createChatRoom } from "../Chat/ChatCustomFun";
 import { ChatBubble } from "@mui/icons-material";
 const ReportCard = ({ data, users, createChatRoomFun }) => {
 	const findPostOwnerData = users?.filter(

@@ -6,9 +6,10 @@ import {
 	update,
 	push,
 } from "firebase/database";
+
 const db = getDatabase();
 
-const createChatRoom = (roomId, secId, secName, secImage, secEmail) => {
+const createChatRoom = async (roomId, secId, secName, secImage, secEmail) => {
 	let myData = {
 		roomId,
 		id: "adminId",
@@ -29,7 +30,8 @@ const createChatRoom = (roomId, secId, secName, secImage, secEmail) => {
 		lastMsg: "",
 		Token: "",
 	};
-	onValue(ref(db, `/chatlist/adminId/${secId}`), (snapshot) => {
+	let finaldata = {};
+	await onValue(ref(db, `/chatlist/adminId/${secId}`), (snapshot) => {
 		const data = snapshot.val();
 		if (data === null) {
 			update(ref(db, `/chatlist/${secId}/adminId`), { ...myData }).then(() => {
@@ -39,19 +41,14 @@ const createChatRoom = (roomId, secId, secName, secImage, secEmail) => {
 					}
 				);
 			});
+			finaldata = { roomId, reciverId: secId };
 		} else {
-			console.log(data);
+			finaldata = { roomId: data.roomId, reciverId: data.id };
 		}
 	});
+	return finaldata;
 };
-const getChatData = () => {
-	// React.useEffect(() => {
-	// 	onValue(ref(db, `/messages/${roomid}`), (snapshot) => {
-	// 		const data = snapshot.val();
-	// 		updateStarCount(postElement, data);
-	// 	});
-	// }, [roomId]);
-};
+const getChatData = () => {};
 const sendMsg = (msg, roomid, toId) => {
 	let msgData = {
 		roomId: roomid,

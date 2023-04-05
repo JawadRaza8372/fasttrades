@@ -11,6 +11,7 @@ import Forget from "./pages/signup/Forget";
 import Reports from "./pages/reports/Reports";
 import SubCategorys from "./pages/subCategory/SubCategorys";
 import { collection, getDocs } from "firebase/firestore";
+import { ref, onValue, getDatabase } from "firebase/database";
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -21,11 +22,13 @@ import {
 	setAds,
 	setSubscription,
 	setReports,
+	setRooms,
 } from "./store/projectSlice";
 import { setAuth } from "./store/authSlice";
 import { db } from "./Firebase";
 import { Navigate, Link } from "react-router-dom";
 import ChatList from "./pages/Chat/ChatList";
+import ChatRoom from "./pages/Chat/ChatRoom";
 const App = () => {
 	let ProtectedRoute = ({ children }) => {
 		const { isAuth } = useSelector((state) => state.auth);
@@ -151,6 +154,14 @@ const App = () => {
 		getAds();
 		getSubscription();
 		getReports();
+		onValue(ref(getDatabase(), `/chatlist/adminId`), (snapshot) => {
+			let result = snapshot.val();
+			let resultarry = Object.keys(result).map((dat, index) => {
+				return { id: dat, data: Object.values(result)[index] };
+			});
+			dispatch(setRooms({ rooms: resultarry }));
+		});
+		console.log("ruuned");
 	});
 
 	return (
@@ -240,11 +251,20 @@ const App = () => {
 						</ProtectedRoute>
 					}
 				/>
+
 				<Route
 					path='/chat'
 					element={
 						<ProtectedRoute>
 							<ChatList />
+						</ProtectedRoute>
+					}
+				/>
+				<Route
+					path='/chatRoom/:id'
+					element={
+						<ProtectedRoute>
+							<ChatRoom />
 						</ProtectedRoute>
 					}
 				/>

@@ -6,15 +6,20 @@ import { useSelector } from "react-redux";
 import ReportCard from "./ReportCard";
 import { createChatRoom } from "../Chat/ChatCustomFun";
 import { v4 } from "uuid";
+import { useNavigate } from "react-router-dom";
 
 const Reports = () => {
+	const navigate = useNavigate();
 	const { reports, users } = useSelector((state) => state.project);
 	const [open, setOpen] = useState(false);
 	const handle = () => {
 		setOpen(!open);
 	};
-	const customChatCreateFun = (rid, rname, rimg, remail) => {
-		createChatRoom(v4(), rid, rname, rimg, remail);
+	const customChatCreateFun = async (rid, rname, rimg, remail) => {
+		let roomid = v4();
+		await createChatRoom(roomid, rid, rname, rimg, remail).then((dat) => {
+			navigate(`/chatRoom/${dat?.roomId}_@${dat?.reciverId}`);
+		});
 	};
 	return (
 		<>
